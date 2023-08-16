@@ -14,7 +14,7 @@ public class LoginSteps {
 	
 	@Given("Start the Chrome Browser")
 	public void start_the_chrome_Browser() {
-	    brw.initialize("CHROME");
+	    
 	}
 
 	@Given("The user is on the login page")
