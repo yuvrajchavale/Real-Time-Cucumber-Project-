@@ -25,7 +25,7 @@ public class LoginMethods {
 
 	    public  void clickLoginButton(WebDriver driver) {
 	    	browserUtils.click(By.id("login"));
-	    	//add 
+	    	
 	    }
 
 	    public void verifyRedirectionToDashboard() {
