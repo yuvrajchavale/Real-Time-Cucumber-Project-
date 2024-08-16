@@ -4,46 +4,48 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
-
-import dev.failsafe.internal.util.Assert;
+import org.junit.Assert;
 import utilities.BrowserUtils;
 
 
 public class LoginMethods {
 
         	
-	
-	 public static void navigateToLoginPage(WebDriver driver) {
-	        driver.get("http://primusbank.qedgetech.com/");
+    public BrowserUtils browserUtils;
+
+    // Constructor to initialize BrowserUtils
+    public LoginMethods(BrowserUtils browserUtils) {
+        this.browserUtils = browserUtils;
+    }
+
+	    public  void enterCredentials(WebDriver driver, String username, String password) {
+	    	browserUtils.sendKeys(By.id("txtuId"), username);
+	    	browserUtils.sendKeys(By.id("txtPword"), password);
 	    }
 
-	    public static void enterCredentials(WebDriver driver, String username, String password) {
-	    	BrowserUtils.sendKeys(By.id("username"), username);
-	        BrowserUtils.sendKeys(By.id("password"), password);
+	    public  void clickLoginButton(WebDriver driver) {
+	    	browserUtils.click(By.id("login"));
 	    }
 
-	    public static void clickLoginButton(WebDriver driver) {
-	        BrowserUtils.click(By.id("loginButton"));
+	    public void verifyRedirectionToDashboard() {
+	        String expectedUrl = "http://primusbank.qedgetech.com/adminflow.aspx";
+	        Assert.assertEquals(browserUtils.getCurrentUrl(), expectedUrl);
 	    }
 
-	    public static void verifyRedirectionToDashboard(WebDriver driver) {
-	        String expectedUrl = "https://example.com/dashboard";
-	        Assert.assertEquals(expectedUrl, BrowserUtils.getCurrentUrl());
-	    }
-
-	    public static void handleAlert(WebDriver driver, String expectedAlertMessage) {
+	    public void handleAlert(String expectedAlertMessage) {
 	        try {
-	            Alert alert = driver.switchTo().alert();
+	            Alert alert = browserUtils.getDriver().switchTo().alert();
 	            String alertText = alert.getText();
-	            Assert.assertEquals(expectedAlertMessage, alertText);
+	            Assert.assertEquals(alertText, expectedAlertMessage);
 	            alert.accept();
 	        } catch (NoAlertPresentException e) {
 	            Assert.fail("Expected an alert, but it was not present.");
 	        }
 	    }
 
-	    public static void verifyBackToLoginPage(WebDriver driver) {
-	        String expectedUrl = "https://example.com/login";
-	        Assert.assertEquals(expectedUrl, BrowserUtils.getCurrentUrl());
+	    public void verifyBackToLoginPage() {
+	        String expectedUrl = "http://primusbank.qedgetech.com/adminflow.aspx";
+	        Assert.assertEquals(browserUtils.getCurrentUrl(), expectedUrl);
 	    }
-}
+	}
+

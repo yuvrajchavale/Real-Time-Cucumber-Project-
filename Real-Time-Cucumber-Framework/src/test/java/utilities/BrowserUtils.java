@@ -1,45 +1,37 @@
+package utilities;
+
+
 import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.junit.Assert;
-import static org.junit.Assert.assertEquals;
 
 
 
 public class BrowserUtils {
 
-    private static WebDriver driver;
-    private static WebDriverWait wait;
+    public WebDriver driver;
+    public  WebDriverWait wait;
 
     // Initializing WebDriver for different browsers
-    public static void initialize(String browser) {
+    public void initialize(String browser) {
         switch (browser.toLowerCase()) {
             case "chrome":
-                WebDriverManager.chromedriver().setup();
-                ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments("--start-maximized");
-                driver = new ChromeDriver(chromeOptions);
-                break;
+               driver = new ChromeDriver();
+               driver.get("http://primusbank.qedgetech.com/");
+               break;
 
             case "firefox":
-                WebDriverManager.firefoxdriver().setup();
-                FirefoxOptions firefoxOptions = new FirefoxOptions();
-                driver = new FirefoxDriver(firefoxOptions);
+                driver = new FirefoxDriver();
                 break;
 
             case "edge":
-                WebDriverManager.edgedriver().setup();
-                EdgeOptions edgeOptions = new EdgeOptions();
-                driver = new EdgeDriver(edgeOptions);
+                driver = new EdgeDriver();
                 break;
 
             default:
@@ -51,7 +43,7 @@ public class BrowserUtils {
     }
 
     // Get the driver instance
-    public static WebDriver getDriver() {
+    public  WebDriver getDriver() {
         if (driver == null) {
             initialize("chrome"); // Default to Chrome if no browser specified
         }
@@ -59,7 +51,7 @@ public class BrowserUtils {
     }
 
     // Quit the driver and clean up
-    public static void quitDriver() {
+    public  void quitDriver() {
         if (driver != null) {
             driver.quit();
             driver = null;
@@ -67,32 +59,32 @@ public class BrowserUtils {
     }
 
     // Wait for an element to be visible
-    public static WebElement waitForVisibility(By locator) {
+    public  WebElement waitForVisibility(By locator) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     // Wait for an element to be clickable
-    public static WebElement waitForClickability(By locator) {
+    public  WebElement waitForClickability(By locator) {
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
     // Click an element
-    public static void click(By locator) {
+    public  void click(By locator) {
         waitForClickability(locator).click();
     }
 
     // Send keys to an element
-    public static void sendKeys(By locator, String text) {
+    public  void sendKeys(By locator, String text) {
         waitForVisibility(locator).sendKeys(text);
     }
 
     // Get the text of an element
-    public static String getText(By locator) {
+    public  String getText(By locator) {
         return waitForVisibility(locator).getText();
     }
 
     // Get the current URL
-    public static String getCurrentUrl() {
+    public  String getCurrentUrl() {
         return driver.getCurrentUrl();
     }
 }

@@ -6,15 +6,16 @@ import org.junit.Before;
 import utilities.BrowserUtils;
 public class Hooks {
 
+	BrowserUtils brw;
 	 @Before
 	    public void setUp() {
 	        // Initialize the browser before each scenario
-	        BrowserUtils.initialize("chrome");  // Specify the desired browser here
+		 brw.initialize("chrome");  // Specify the desired browser here
 	    }
 
 	    @After
 	    public void tearDown() {
 	        // Quit the browser after each scenario
-	        BrowserUtils.quitDriver();
+	        brw.quitDriver();
 	    }
 }

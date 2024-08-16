@@ -1,19 +1,26 @@
 package stepDefination;
 
+import functionLibrary.LoginMethods;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import utilities.BrowserUtils;
 
 public class LoginSteps {
 
-	@Given("Start the Browser")
-	public void start_the_Browser() {
-	    
+	BrowserUtils brw;
+	LoginMethods lgn;
+	
+	
+	@Given("Start the Chrome Browser")
+	public void start_the_chrome_Browser() {
+	    brw.initialize("CHROME");
 	}
 
 	@Given("The user is on the login page")
 	public void the_user_is_on_the_login_page() {
-	    	}
+			
+	}
 
 	@When("The user enters a valid username and password")
 	public void the_user_enters_a_valid_username_and_password() {
