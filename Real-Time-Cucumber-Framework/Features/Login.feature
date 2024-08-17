@@ -1,7 +1,7 @@
 Feature: User Login With Valid and Invalid Credentials
 
 Background:
-Given Start the Browser
+Given Start the Chrome Browser
 
 @positive
 Scenario: Successful login with valid credentials
