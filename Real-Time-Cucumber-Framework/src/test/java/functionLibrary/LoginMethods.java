@@ -14,7 +14,7 @@ public class LoginMethods {
     public BrowserUtils browserUtils;
 
     // Constructor to initialize BrowserUtils
-    public LoginMethods(BrowserUtils browserUtils) {
+    public void loginMethods(BrowserUtils browserUtils) {
         this.browserUtils = browserUtils;
     }
 
@@ -26,6 +26,14 @@ public class LoginMethods {
 	    public  void clickLoginButton(WebDriver driver) {
 	    	browserUtils.click(By.id("login"));
 	    	
+	    }
+	    
+	    public  void clickLogOutButton(WebDriver driver) {
+	    	browserUtils.click(By.xpath("//a[@href='http://primusbank.qedgetech.com']"));
+	    	
+	    }
+	    public void closeBrowser(WebDriver driver) {
+	    	driver.quit();
 	    }
 
 	    public void verifyRedirectionToDashboard() {
@@ -45,7 +53,7 @@ public class LoginMethods {
 	    }
 
 	    public void verifyBackToLoginPage() {
-	        String expectedUrl = "http://primusbank.qedgetech.com/adminflow.aspx";
+	        String expectedUrl = "http://primusbank.qedgetech.com/";
 	        Assert.assertEquals(browserUtils.getCurrentUrl(), expectedUrl);
 	    }
 	}
