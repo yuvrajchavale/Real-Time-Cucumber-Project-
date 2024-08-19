@@ -9,6 +9,8 @@ Given The user is on the login page
 When The user enters a valid username and password
 And The user clicks the login button
 Then The user should be redirected to the dashboard
+When Click on Logout button
+Then Close the browser
 
 @negative
 Scenario: Unsuccessful login with invalid credentials
@@ -17,3 +19,4 @@ When The user enters an invalid username and password
 And The user clicks the login button
 Then An error message should be displayed and click ok
 And The user should be back on the login page
+Then Close the browser
