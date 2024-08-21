@@ -2,6 +2,7 @@
 <p>Welcome to the <strong>Real-Time Cucumber Framework</strong> repository! This project showcases a comprehensive Cucumber testing framework designed to automate and verify the login functionality of a web application. Cucumber, a powerful Behavior-Driven Development (BDD) tool, allows you to define application requirements in a human-readable language called Gherkin and automatically validate the implementation.</p>
 
 ## <div style="color: #4CAF50;">Project Structure</div>
+![Project Structure](https://github.com/yuvrajchavale/Real-Time-Cucumber-Project-/blob/master/Project-Structure)
 
 <p>The project is organized into the following key directories and files:</p>
 
