@@ -1,81 +1,162 @@
-# <div style="text-align: center;">Real-Time Cucumber Framework</div>
-<p>Welcome to the <strong>Real-Time Cucumber Framework</strong> repository! This project showcases a comprehensive Cucumber testing framework designed to automate and verify the login functionality of a web application. Cucumber, a powerful Behavior-Driven Development (BDD) tool, allows you to define application requirements in a human-readable language called Gherkin and automatically validate the implementation.</p>
+<!-- This is your README.md file -->
 
-## <div style="color: #4CAF50;">Project Structure</div>
-![Project Structure](https://github.com/yuvrajchavale/Real-Time-Cucumber-Project-/blob/master/Project-Structure)
+<h1 align="center">Real-Time Cucumber Framework</h1>
 
-<p>The project is organized into the following key directories and files:</p>
+<p align="center">
+  This framework is built using <strong>Cucumber</strong> for behavior-driven development (BDD) testing. It allows you to write tests in a natural language format using feature files while leveraging the power of Java for automation.
+</p>
 
-<ul style="line-height: 1.8;">
-  <li><strong>src/main/java</strong>: Contains the main Java source files for the web application under test.</li>
-  <li><strong>src/main/resources</strong>: Holds essential resources, such as configuration files and data files.</li>
-  <li><strong>src/test/java</strong>:
-    <ul>
-      <li><strong>functionLibrary</strong>: Implements the Cucumber hooks and test runner.
-        <ul>
-          <li><code>Hooks.java</code>: Defines the setup and teardown logic for the tests.</li>
-          <li><code>TestRunner.java</code>: The entry point for running the Cucumber tests.</li>
-        </ul>
-      </li>
-      <li><strong>stepDefinition</strong>: Contains step definition files like <code>LoginSteps.java</code>, which implement the logic for the Gherkin scenarios.</li>
-      <li><strong>utilities</strong>: Provides utility functions for interacting with the web browser, e.g., <code>BrowserUtils.java</code>.</li>
-    </ul>
-  </li>
-  <li><strong>src/test/resources</strong>:
-    <ul>
-      <li><strong>configs</strong>: Includes Cucumber configuration files, such as <code>config.properties</code>.</li>
-      <li><strong>testData</strong>: Contains test data for login scenarios, like <code>loginData.json</code>.</li>
-    </ul>
-  </li>
-  <li><strong>target</strong>: Used for compiled output and test reports.</li>
-  <li><strong>pom.xml</strong>: The Maven Project Object Model (POM) file, which manages dependencies and build processes.</li>
-  <li><strong>README.md</strong>: The project's documentation file (that you are currently reading).</li>
+---
+
+<h2>🚀 Features</h2>
+
+<ul>
+  <li><strong>Cucumber BDD Approach:</strong> Write tests in Gherkin syntax with feature files.</li>
+  <li><strong>Modular Design:</strong> Separate modules for utilities, hooks, step definitions, and runners.</li>
+  <li><strong>Configuration Management:</strong> Centralized configuration properties for test setup.</li>
+  <li><strong>Data-Driven Testing:</strong> Supports JSON files for test data inputs.</li>
+  <li><strong>Browser Utilities:</strong> Predefined methods to handle common browser tasks.</li>
 </ul>
 
-## <div style="color: #4CAF50;">Getting Started</div>
+---
 
-<p>To get started with the Real-Time Cucumber Framework, follow these steps:</p>
+<h2>📂 Project Structure & Class Descriptions</h2>
 
-<ol style="line-height: 1.8;">
+<pre>
+Real-Time-Cucumber-Framework
+│
+├── src
+│   ├── main
+│   │   ├── java
+│   │   └── resources
+│   └── test
+│       ├── java
+│       │   ├── functionLibrary
+│       │   │   └── FunctionLibrary.java
+│       │   │       - Contains reusable methods for handling browser interactions, element manipulation, waits, and other core functionality.
+│       │   ├── hooks
+│       │   │   └── Hooks.java
+│       │   │       - Implements @Before and @After Cucumber hooks for setting up and tearing down test scenarios (e.g., opening and closing the browser).
+│       │   ├── runners
+│       │   │   └── TestRunner.java
+│       │   │       - The entry point for test execution, linking feature files to step definitions, and configuring execution options.
+│       │   ├── stepDefinitions
+│       │   │   └── LoginSteps.java
+│       │   │       - Maps Gherkin steps from the Login.feature file to actual Java methods for executing login-related steps.
+│       │   └── utilities
+│       │       └── BrowserUtils.java
+│       │           - Provides utility methods for browser actions like opening URLs, handling windows, and taking screenshots.
+│       └── resources
+│           ├── configs
+│           │   └── config.properties
+│           │       - Contains configurable properties like URLs, browser settings, and environment-specific variables.
+│           ├── testData
+│           │   └── loginData.json
+│           │       - Stores login test data in JSON format for use in data-driven tests.
+│
+├── Features
+│   └── Login.feature
+│       - Contains scenarios for testing the login functionality in Gherkin syntax (Given, When, Then).
+│
+├── target
+│   ├── cucumber-reports
+│       - Stores test execution reports in HTML, JSON, or XML format for post-execution analysis.
+│
+├── pom.xml
+└── README.md
+</pre>
+
+---
+
+<h2>📦 Dependencies</h2>
+
+Make sure you have the following installed:
+
+<ul>
+  <li><strong>Java</strong> (version 8 or above)</li>
+  <li><strong>Maven</strong> (latest stable version)</li>
+</ul>
+
+<h3>📚 Libraries Used</h3>
+<ul>
+  <li><strong>Cucumber</strong> (for BDD testing)</li>
+  <li><strong>Selenium WebDriver</strong> (for browser automation)</li>
+  <li><strong>TestNG</strong> (for testing)</li>
+  <li><strong>Maven Surefire Plugin</strong> (for running tests)</li>
+  <li><strong>JSON Simple</strong> (for reading JSON test data)</li>
+</ul>
+
+---
+
+<h2>🛠️ How to Run the Tests</h2>
+
+<ol>
   <li><strong>Clone the repository:</strong>
-    <pre><code>git clone https://github.com/yuvrajchavale/Real-Time-Cucumber-Project.git</code></pre>
+    <pre>
+    git clone https://github.com/yourusername/Real-Time-Cucumber-Framework.git
+    cd Real-Time-Cucumber-Framework
+    </pre>
   </li>
-  <li><strong>Navigate to the project directory:</strong>
-    <pre><code>cd Real-Time-Cucumber-Project</code></pre>
+  <li><strong>Install the dependencies:</strong>
+    <pre>
+    mvn clean install
+    </pre>
   </li>
-  <li><strong>Install the required dependencies:</strong>
-    <pre><code>mvn install</code></pre>
-  </li>
-  <li><strong>Run the Cucumber tests:</strong>
-    <pre><code>mvn test</code></pre>
-    The tests will execute, and you can view detailed test reports in the <code>target/cucumber-reports</code> directory.
+  <li><strong>Run the tests:</strong>
+    <pre>
+    mvn test
+    </pre>
   </li>
 </ol>
 
-## <div style="color: #4CAF50;">Features</div>
+---
 
-<ul style="line-height: 1.8;">
-  <li><strong>Login Testing:</strong> Includes both positive and negative test scenarios for login functionality.</li>
-  <li><strong>BDD Approach:</strong> Utilizes Cucumber for defining and automating test cases.</li>
-  <li><strong>Selenium WebDriver Integration:</strong> Automates browser interactions.</li>
-  <li><strong>Configurable Test Data:</strong> Allows flexible test data and environment settings.</li>
-  <li><strong>Detailed Reporting:</strong> Provides comprehensive test reports for easy analysis and debugging.</li>
+<h2>📝 Test Data Structure</h2>
+
+<p>
+Test data is stored in the <code>src/test/resources/testData</code> directory. The data is stored in JSON format, which is used during test execution to feed the required inputs.
+</p>
+
+---
+
+<h2>📊 Test Results</h2>
+
+<p>
+After execution, Cucumber reports are automatically generated and saved in the <code>target/cucumber-reports</code> directory. You can open these reports to review the results of your test executions.
+</p>
+
+---
+
+<h2>🌐 Contribution Guidelines</h2>
+
+<p>
+Feel free to contribute to the project! Whether it's reporting a bug, proposing a new feature, or submitting a pull request, we appreciate all contributions.
+</p>
+
+<ol>
+  <li>Fork the repo</li>
+  <li>Create your feature branch (<code>git checkout -b feature/fooBar</code>)</li>
+  <li>Commit your changes (<code>git commit -am 'Add some fooBar'</code>)</li>
+  <li>Push to the branch (<code>git push origin feature/fooBar</code>)</li>
+  <li>Create a new Pull Request</li>
+</ol>
+
+---
+
+<h2>🎨 Technologies Used</h2>
+
+<ul>
+  <li><strong>Java</strong></li>
+  <li><strong>Maven</strong></li>
+  <li><strong>Cucumber</strong></li>
+  <li><strong>Selenium WebDriver</strong></li>
+  <li><strong>TestNG</strong></li>
 </ul>
 
-## <div style="color: #4CAF50;">Contributing</div>
+---
 
-<p>We welcome contributions to the Real-Time Cucumber Framework! If you find any issues or have suggestions for improvements:</p>
+<h2>🌟 Show Your Support</h2>
 
-<ol style="line-height: 1.8;">
-  <li><strong>Create a new issue</strong> for bug reports or feature requests.</li>
-  <li><strong>Submit a pull request</strong> with your proposed changes.</li>
-</ol>
-
-<p>Feel free to contribute and help me to improve the project!</p>
-
-## <div style="color: #4CAF50;">Contact</div>
-
-<p>- <strong>Author:</strong> <a href="mailto:your-email@example.com">Yuvraj Chavale</a></p>
-<p>- <strong>Email:</strong> <a href="mailto:chawaleyuvraj@gmail.com">chawaleyuvraj@gmail.com</a></p>
-
-
+<p>
+If you like this framework, please give it a ⭐ on GitHub!
+</p>
