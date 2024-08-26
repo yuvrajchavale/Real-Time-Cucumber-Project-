@@ -93,7 +93,7 @@ Make sure you have the following installed:
 <ol>
   <li><strong>Clone the repository:</strong>
     <pre>
-    git clone https://github.com/yourusername/Real-Time-Cucumber-Framework.git
+    git clone https://github.com/yuvrajchavale/Real-Time-Cucumber-Project-.git
     cd Real-Time-Cucumber-Framework
     </pre>
   </li>
